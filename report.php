@@ -45,7 +45,7 @@ th {
     echo "<h2 style='color: #001a4d'>สรุปจำนวนทั้งหมด</h2>";
     echo "<h3 style='color: #001a4d'>จำแนกตาม คนใช้บริการในแต่ละเที่ยวรถและเงินที่ได้</h3>";
 	echo "<table class='table'>";
-	echo "<tr style='background-color:#DCDCDC'><th>From-to</th><th>Time Slot</th><th>จำนวนคนใช้บริการ</th><th>จำนวนเงินที่ได้</th></tr>";
+	echo "<tr style='background-color:#DCDCDC'><th>จุดเริ่มต้นและปลายทาง</th><th>เวลา</th><th>จำนวนคนใช้บริการ</th><th>จำนวนเงินที่ได้</th></tr>";
 	
 	$sum=0;
 	//loop to read each record and then add to array data
@@ -64,7 +64,7 @@ th {
 		// $pnt = $nt;
 		$sum=$sum+$pr;
 	}
-	echo "<tr style='background-color:#DCDCDC'><th colspan='4'>ผลรวมเงินทั้งหมด ".$sum." บาท </th></tr>";
+	echo "<tr style='background-color:#DCDCDC'><th colspan='4'>ผลรวมเงินทั้งหมด ".number_format($sum)." บาท </th></tr>";
 	// echo "<tr style='background-color:#DCDCDC'>";
 	// while($rw = $result->fetch_assoc()){ 
 	// 	$pr = $rw['pr'];

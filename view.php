@@ -91,16 +91,16 @@ $sql = "SELECT bkid,con_nme,con_tel,plcnme,numpgr, 	lik ,lat,lng FROM book,daysc
 // echo $sql;		
 $result = $conn->query($sql);
 	
-echo "<h2 style='color: #001a4d'>Details</h2>";
+echo "<h2 style='color: #001a4d'>วันที่ ".$bkdate."</h2>";
 echo "<table class='table'>";
 echo "<tr style='background-color:#DCDCDC'>";
 echo "<th ><center>ลำดับที่</center></th>";
-echo "<th>Book ID</th>";
-echo "<th>Contact Name</th>";
-echo "<th>Contact Tel.</th>";
-echo "<th>Place</th>";
-echo "<th>Number of people</th>";
-echo "<th>Link to Map</th>";
+echo "<th>รหัสการจอง</th>";
+echo "<th>ชื่อ</th>";
+echo "<th>เบอร์โทรศัพท์</th>";
+echo "<th>สถานที่</th>";
+echo "<th>จำนวนคนจอง</th>";
+echo "<th>Link</th>";
 // echo "<th>Gender</th>";
 // echo "<th>Tel</th>";
 // echo "<th colspan=2>ดำเนินการ</th>";
@@ -133,7 +133,7 @@ if ($result->num_rows > 0) {
 		// echo "</td>";
 		echo "</tr>";	
     }
-	echo "<tr style='background-color:#DCDCDC'><th colspan='11'>Total ".$numfound." records </th></tr>";
+	echo "<tr style='background-color:#DCDCDC'><th colspan='11'>ทั้งหมด ".$numfound." แถว </th></tr>";
 } else {
     echo "0 results";
 }

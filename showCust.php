@@ -81,16 +81,16 @@ $sql = "SELECT cusid, cnme, csurnme, c_email, csex, ctel
 			
 $result = $conn->query($sql);
 	
-echo "<h2 style='color: #001a4d'>All Customer</h2>";
+echo "<h2 style='color: #001a4d'>ข้อมูลลูกค้า</h2>";
 echo "<table class='table'>";
 echo "<tr style='background-color:#DCDCDC'>";
 echo "<th ><center>ลำดับที่</center></th>";
-echo "<th>ID</th>";
-echo "<th>First name</th>";
-echo "<th>Last name</th>";
+// echo "<th>ID</th>";
+echo "<th>ชื่อ</th>";
+echo "<th>นามสกุล</th>";
 echo "<th>E-mail</th>";
-echo "<th>Gender</th>";
-echo "<th>Tel</th>";
+echo "<th>เพศ</th>";
+echo "<th>เบอร์โทรศัพท์</th>";
 echo "<th colspan=2>ดำเนินการ</th>";
 echo "</tr>";
 if ($result->num_rows > 0) {
@@ -99,7 +99,7 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
 		echo "<tr>";
 		echo "<td><center>".++$n."</center></td>";
-        echo "<td>".$row["cusid"]."</td>";
+        // echo "<td>".$row["cusid"]."</td>";
 		echo "<td>".$row["cnme"]."</td>";
 		echo "<td>".$row["csurnme"]."</td>";
 		echo "<td>".$row["c_email"]."</td>";
@@ -108,20 +108,20 @@ if ($result->num_rows > 0) {
 		echo "<td>";
 		echo "<form action = 'editCustForm.php' method ='post'> ";
 		echo "<input type='hidden' name ='cusid'  value = '".$row["cusid"]."'/>";		
-		echo "<input name = 'updateCust' type='submit' value='edit' />";
+		echo "<input name = 'updateCust' type='submit' value='แก้ไข' />";
 		echo "</form>";
 		echo "</td>";
-		echo "<td>";
-		echo "<form action = 'operation.php' method ='post'> ";
-		echo "<input type='hidden' name ='cusid'  value = '".$row["cusid"]."'/>";
-		echo "<input name = 'delCust' type='submit' value='del' />";
-		echo "</form>";
-		echo "</td>";
+		// echo "<td>";
+		// echo "<form action = 'operation.php' method ='post'> ";
+		// echo "<input type='hidden' name ='cusid'  value = '".$row["cusid"]."'/>";
+		// echo "<input name = 'delCust' type='submit' value='del' />";
+		// echo "</form>";
+		// echo "</td>";
 		echo "</tr>";	
     }
-	echo "<tr style='background-color:#DCDCDC'><th colspan='11'>Total ".$numfound." records </th></tr>";
+	echo "<tr style='background-color:#DCDCDC'><th colspan='11'>ทั้งหมด ".$numfound." แถว </th></tr>";
 } else {
-    echo "0 results";
+    echo "0 ผลลัพธ์";
 }
 //show navigation bar
 echo "<tr><td colspan='13'><center>";

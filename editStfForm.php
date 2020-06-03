@@ -34,7 +34,7 @@
 	<div class="col-sm-4" ></div>
 	<div class="col-sm-4">
 
-	<h2>Edit Staff Form</h2>
+	<h2>แก้ไขข้อมูลพนักงาน</h2>
 	<!-- this enctype="multipart/form-data" is necessary for uploading file -->
 	<form action="operation.php" method="post" enctype="multipart/form-data">
 		
@@ -45,23 +45,23 @@
 	</div>
 
 	<div class="form-group">
-		<label for="user">Name:</label>
+		<label for="user">ชื่อ:</label>
 		<input type="text" class="form-control" name="nme" value="<?php echo $row["stfnme"] ?>">
 	</div>
 
 	<div class="form-group">
-        <label for="user">Surname:</label>
+        <label for="user">นามสกุล:</label>
         <input type="text" class="form-control" name="snme" value="<?php echo $row["stfsurnme"] ?>"> 
     </div>
 
 	<div class="form-group">
-        <label for="user">Gender:</label>
+        <label for="user">เพศ:</label>
         <input type="radio" name="sex" value="male" <?php if ($row["stfsex"]==male) echo "checked" ?> > Male
         <input type="radio" name="sex" value="female"> Female<br>
     </div>
 
 	<div class="form-group">
-        <label for="user">Tel:</label>
+        <label for="user">เบอร์โทรศัพท์:</label>
         <input type="text" class="form-control" name="tel" value="<?php echo $row["stftel"] ?>"> 
     </div>
 
@@ -71,7 +71,7 @@
     </div>
 
 
-    <input type="submit" class="btn btn-primary" name="updateStf" value="Update" >
+    <input type="submit" class="btn btn-primary" name="updateStf" value="อัพเดต" >
 </form>
 </div>
 <div class="col-sm-4" ></div>

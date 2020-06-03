@@ -28,39 +28,11 @@ include "menu.php";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
     $n = $row['bk']; 
-    $bno = "BK".date("Y").($n+1);
+    $bno = "BK".date("Y").(1000+$n+1);
     $conn->close();
 ?> 
 
 <p id="demo" type="hidden"></p>
-
-<script>
-var x = document.getElementById("demo");
-
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else { 
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
-
-function showPosition(position) {
-  // x.innerHTML = "Latitude: " + position.coords.latitude + 
-  // "<br>Longitude: " + position.coords.longitude;
-  
-  document.getElementById("lat").value = position.coords.latitude;
-  document.getElementById("lng").value = position.coords.longitude;
-}
-
-let nowdte = new Date();
-let m = nowdte.getMonth()+1;
-let d = nowdte.getDate();
-let mm = (m<10)?"0"+m:m;
-let dd = (d<10)"0"+d:d;
-let mindte = nowdte.getFullYear()+"-"+mm+"-"+dd;
-  document.getElementById("mydate").min=""+mindte;
-</script> 
 
 
 <body>
@@ -69,17 +41,17 @@ let mindte = nowdte.getFullYear()+"-"+mm+"-"+dd;
 
   <div class="col-sm-4" ></div>
   <div class="col-sm-4" >
-  <h2>Booking Form</h2>
+  <h2>แบบฟอร์มทำการจอง</h2>
   <form action="operation.php" method="post">
     <div class="form-group">  
-      <label for="user">รหัสการจอง/Booking ID: </label>
+      <label for="user">รหัสการจอง: </label>
       <input type="text" name="bid" class="form-control" value='<?php echo $bno; ?>' disabled>
       <input type="hidden" name="bid" class="form-control" value='<?php echo $bno; ?>'>
     </div>
 
     <div class="form-group">
-      <label for="user">วันที่ต้องการจอง: </label>
-      <input type="date" name="bdte" class="form-control" id="mydate">
+      <label for="user">วันที่เดินทาง: </label>
+      <input type="date" name="bdte" class="form-control" id="mydate" min='<?php echo date('Y-m-d'); ?>'>
     </div>
     
     <div class="form-group">
@@ -101,47 +73,32 @@ let mindte = nowdte.getFullYear()+"-"+mm+"-"+dd;
     </div>
     
     <div class="form-group">
-      <label for="user">จำนวนคนที่จอง: </label>
-      <input type="text" name="num" class="form-control" placeholder="Enter number " required >
+      <label for="user">จำนวนที่นั่ง: </label>
+      <input type="number" name="num" class="form-control" placeholder="ระบุจำนวน" required >
     </div>    
     <div class="form-group">  
-      <label for="user">รหัสพนักงานที่ทำการจอง/Staff ID: </label>
+      <label for="user">รหัสพนักงานที่ทำการจอง: </label>
       <input type="text" name="id" class="form-control" placeholder="Enter Customer ID" value='<?php echo $_SESSION['valid_id']; ?>' required>
     </div>
-    <h2>Contact</h2>
+    <h2>ข้อมูลติดต่อ</h2>
     <div class="form-group">
       <label for="user">ชื่อผู้ติดต่อ: </label>
-      <input type="text" name="nme" class="form-control" placeholder="Enter Name" required>
+      <input type="text" name="nme" class="form-control" placeholder="กรุณากรอก" required>
     </div>
 
     <div class="form-group">
       <label for="user">เบอร์โทรที่สาสารถติดต่อได้: </label>
-      <input type="text" name="tel" class="form-control" placeholder="Enter Tel" required>
+      <input type="number" name="tel" class="form-control" placeholder="กรุณากรอก" required>
     </div>
 
     <div class="form-group">
-      <label for="user">ชื่อสถานที่/Places: </label>
-      <input type="text" name="place" class="form-control" placeholder="Enter Places" required>
-    </div>
-<!--   
-   <div class="form-group">
-       <label for="user">Your Latitude: </label> 
-      <input type="hidden" id='lat' name="lat" class="form-control" >
+      <label for="user">ชื่อสถานที่: </label>
+      <input type="text" name="place" class="form-control" placeholder="กรุณากรอก" required>
     </div>
     
-    <div class="form-group">
-       <label for="user">Your Longitude: </label> 
-      <input type="hidden"  id='lng' name="lng" class="form-control">
-    </div> -->
-    
-    <center><input type="submit" class="btn btn-primary" name="bookSTF" value="book"></center>
-    <!-- <button class="btn btn-primary" onclick="getLocation()">Try It</button> -->
+    <center><input type="submit" class="btn btn-primary" name="bookSTF" value="จอง"></center>
+
   </form>
-
-  <!-- <div class="form-group">
-  <button onclick="getLocation()">Try It</button>
-  </div>
-  </div> -->
 
 
   <div class="col-sm-4" ></div>

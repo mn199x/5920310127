@@ -80,7 +80,7 @@
 				$mail->Body = "Dear $fname $lname
 				
 							<br>You have successfully registered for the C-saim System <br>
-							    Your username and password are below
+							    Your ID is $id . Your username and password are below
 							   
 							<br><br>username: $c_email
 							<br><br>password: $pswd <br><br>
@@ -89,22 +89,24 @@
 							<b>*** This is an automatically generated email. please do not reply. *** <br><br></b>
 						
 							<b>If you have any inquiry, please contact.</b> <br>
-							Phone : +66 082 822 1388 <br>
-							<br><br>
+							Email : kriangsak.d@psu.ac.th <br>
+							Phone : +66 73-313928-50 Ext. 1890 / +66 73-312179 <br>
+							Fax : +66 073-312179 <br><br>
 						
 							<b>More information</b> <br>
-							Facebook : https://www.facebook.com/ซี-สยาม-แทรแวล-รถเช่ารายวันปัตตานี-350630588451804<br>";
+							Website : https://sites.google.com/site/webprogroom <br>
+							Facebook : https://www.facebook.com/kdamchoom<br>";
 				
 				
 				$mail->AddAddress($c_email); // to email address
-				// $mail->AddBCC("muna.14474@gmail.com"); //add Bcc email, if required
+				$mail->AddBCC("muna.14474@gmail.com"); //add Bcc email, if required
 				
 				if($mail->Send()) //call the method to send this mail
 				{
 					//the script shown after sending mail completed
 					echo 
 						"<script>
-							window.alert('You have successfully registered, please check your email box. ');
+							window.alert('ลงทะเบียนเรียบร้อยแล้ว');
 							window.location.href='login.php';
 							</script>"; 
 					
@@ -124,7 +126,7 @@
 				echo "<script> alert('Insertion errors, ".$conn->error."');</script>";
 			}
 		}
-    }//end insertion
+	}//end insertion
 	else if(isset($_POST['updateCust'])){ //in case of update
 
 		$cusid		=$_POST['id'];
@@ -146,13 +148,13 @@
 	
 			if($utype==1) //staff/admin
 				echo "<script>
-							alert('Updated successful JA');
+							alert('อัพเดตเรียบร้อยแล้ว');
 							window.location.href='showCust.php';
 					</script>";
-			else if($utype==3) //if patient
+			else if($utype==3) //customer
 				echo "<script>
-						alert('Updated successful JA');
-						window.location.href='menu.php';
+						alert('อัพเดตเรียบร้อยแล้ว');
+						window.location.href='index.php';
 					</script>";
 		} else {
 			echo "Error updating record: " . $conn->error;
@@ -250,7 +252,7 @@
 						//the script shown after sending mail completed
 						echo 
 							"<script>
-								window.alert('You have successfully registered, please check your email box. ');
+								window.alert('ลงทะเบียนเรียบร้อยแล้ว');
 								window.location.href='login.php';
 							</script>"; 
 					}else{
@@ -290,7 +292,7 @@
 		
 				if($utype==1) //staff/admin
 					echo "<script>
-								alert('Updated successful JA');
+								alert('อัพเดตเรียบร้อยแล้ว');
 								window.location.href='showSTF.php';
 						</script>";
 				
@@ -394,7 +396,7 @@
 						//the script shown after sending mail completed
 						echo 
 							"<script>
-								window.alert('You have successfully registered, please check your email box. ');
+								window.alert('ลงทะเบียนเรียบร้อยแล้ว');
 								window.location.href='showDRV.php';
 							</script>"; 
 							 
@@ -438,13 +440,13 @@
 		
 				if($utype==1) //staff/admin
 					echo "<script>
-								alert('Updated successful JA');
+								alert('อัพเดตเรียบร้อยแล้ว');
 								window.location.href='showDRV.php';
 						</script>";
 				else if($utype==2) //if driver
 						echo "<script>
-								alert('Updated successful JA');
-								window.location.href='menu.php';
+								alert('อัพเดตเรียบร้อยแล้ว');
+								window.location.href='index.php';
 							</script>";
 			} else {
 				echo "Error updating record: " . $conn->error;
@@ -475,7 +477,7 @@
 			if($mx-$nbk<$numpgr){//case not available
 
 				echo "<script>
-				  alert('Not available, now only has ".($mx-$nbk)."  seats');
+				  alert('มีที่นั่งไม่เพียงพอ, ตอนนี้มีจำนวนที่นั่ง ".($mx-$nbk)." ');
 				  window.history.back();
 				  </script>";
 				return;
@@ -483,13 +485,13 @@
 		
 			$sql2= "INSERT INTO book (bkid, cusid, slotid, plcnme, lik, bkdate, numpgr, con_nme, con_tel,bstatus) 
 						VALUES ('$bkid', '$cusid', '$slotid','$plcnme','$lik','$bkdate', '$numpgr', '$con_nme', '$con_tel','1')";
-				echo $sql2;
+				// echo $sql2;
 				$rs2 = mysqli_query($conn,$sql2); //รันคำสั่ง sql เก็บผลลัพธ์ใน $rs
 				
 				if($rs2){
 					echo 
 							"<script>
-								window.alert('You have Successfully');
+								window.alert('เรียบร้อยแล้ว');
 								window.location.href='index.php';
 							</script>"; 
 				}else{ //กรณี รัน sql ไม่ผ่าน
@@ -536,20 +538,16 @@
 			mysqli_close($conn);
 				
 		}else if(isset($_POST['bookSTF'])){ //in case of insertion
-			// $id	=$_POST['id'];
-
-
+		
 			$bkid		=$_POST['bid'];
 			$bkdate		=$_POST['bdte'];
 			$slotid 	=$_POST['slotid'];
-			// $pswd 	=$_POST['pwd'];
 			$numpgr	 	=$_POST['num'];
 			$cusid	 	=$_POST['id'];
 			$plcnme	 	=$_POST['place'];
 			$con_nme 	=$_POST['nme'];
 			$con_tel	 =$_POST['tel'];
-			// $lat	 	=$_POST['lat'];
-			// $lng	 	=$_POST['lng'];
+
 
 			//CHECK seat available
 			$sql = "SELECT sum(maxnum) as mx, sum(numbook) as nbk FROM dayscheduled WHERE schdate = '$bkdate' AND slotid= '$slotid' GROUP BY schdate,slotid";
@@ -559,17 +557,17 @@
 			$mx=$row['mx'];
 			$nbk=$row['nbk'];
 			if($mx-$nbk<$numpgr){//case not available
-
 				echo "<script>
 				  alert('Not available, now only has ".($mx-$nbk)."  seats');
 				  window.history.back();
 				  </script>";
 				return;
 			}
-		
-			$sql2= "INSERT INTO book (bkid, cusid, slotid, plcnme, bkdate, numpgr, con_nme, con_tel,bstatus) 
-						VALUES ('$bkid', '$cusid', '$slotid', '$plcnme','$bkdate', '$numpgr', '$con_nme', '$con_tel','1')";
-				// echo $sql;
+
+
+			$sql2= "INSERT INTO book (bkid, cusid, slotid, plcnme, bkdate, numpgr, con_nme, con_tel, bstatus) 
+					VALUES ('$bkid', '$cusid', '$slotid','$plcnme', '$bkdate', '$numpgr', '$con_nme', '$con_tel','1')";
+				// echo $sql2;
 				$rs2 = mysqli_query($conn,$sql2); //รันคำสั่ง sql เก็บผลลัพธ์ใน $rs
 				
 				if($rs2){
@@ -580,7 +578,8 @@
 							</script>"; 
 				}else{ //กรณี รัน sql ไม่ผ่าน
 					
-					echo "<script> alert('Insertion errors, ".$conn->error."');</script>";
+					echo "<script> alert('Insertion errors, ".$conn->error."');
+					</script>";
 				}
 
 			$sql3 = "SELECT sum(maxnum) as mx, sum(numbook) as nbk , carid FROM dayscheduled 
@@ -627,7 +626,7 @@
 			$sql = "UPDATE book SET bstatus='0'WHERE bkid='$bkid'";
 			
 			if($conn->query($sql)==TRUE){
-				echo "<script>alert('Book ID = ".$bkid." is cancel successfully.'); window.location.href='showCBook.php';</script>";
+				echo "<script>alert('รหัสการจอง = ".$bkid." ยกเลิกเรียบร้อยแล้ว'); window.location.href='showCBook.php';</script>";
 		   } else{
 				//echo "Deleting Error".$conn->error;
 				echo "<script>alert('Cancel Error:".$conn->error."');</script>";
@@ -645,7 +644,7 @@
 				
 				if($rs){
 					echo 	"<script>
-								window.alert('Successfully');
+								window.alert('เรียบร้อยแล้ว');
 								window.location.href='showDaySch.php';
 							</script>"; 
 				}

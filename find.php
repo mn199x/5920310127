@@ -57,7 +57,8 @@ $bldgrp	=$_POST['bldgrp'];
 //count all patients from database
 	$sql = "SELECT SUBSTRING(bkdate,1,7) as yyyy , timeslot.slotid,frm_to ,t_start,SUM(book.numpgr*price) as pr 
 			FROM book,timeslot 
-			WHERE bkdate LIKE '%$search%' AND book.bstatus='1' AND timeslot.slotid=book.slotid";
+			WHERE bkdate LIKE '%$search%' AND book.bstatus='1' AND timeslot.slotid=book.slotid ";
+	// echo $sql;
 	if($yyyy !="")
 		$sql = $sql." AND bkdate LIKE '%$yyyy%' ";
 
@@ -68,9 +69,9 @@ $bldgrp	=$_POST['bldgrp'];
 	echo "<center>";
 	
 	echo "<form action='find.php' method='post' name='search'>";
-	echo "<label for='search'>Search Date: </label>";
-	echo "<input type='text' size='50%'  name='search' placeholder='Enter Dates' />";
-	echo "<input type='submit' value='search' />";
+	echo "<label for='search'>ค้นหาปีหรือเดือน: </label>";
+	echo "<input type='text' size='50%'  name='search' placeholder='กรุณาป้อนเดือนหรือปี' />";
+	echo "<input type='submit' value='ค้นหา' />";
 	echo "</form>";
 	echo "</center>";
 
@@ -79,10 +80,10 @@ $bldgrp	=$_POST['bldgrp'];
 	// 		echo "<font size='-1' color='#FF0000'>ผลลัพธ์ของคำว่า [ $search ] </font><br />";
 	
 // show all records satisfied	
-echo "<h2 style='color: #001a4d'>Search</h2>";
+echo "<h2 style='color: #001a4d'>ค้นหา</h2>";
 echo "<table class='table'>";
 echo "<tr style='background-color:#DCDCDC'>";
-echo "<th>Date</th>";
+echo "<th>วันที่</th>";
 // echo "<th>From-To</th>";
 // echo "<th>Time slot</th>";
 echo "<th>จำนวนคนใช้บริการ</th>";
@@ -120,7 +121,7 @@ $search = $_POST[search];
 		$sum1=$sum1+($nb);
 		$sum2=$sum2+($pr);
 	} 
-	echo "<tr style='background-color:#DCDCDC'><th colspan='4'>จำนวนผู้ใช้บริการทั้งหมด ".$sum1." และผลรวมเงินทั้งหมด ".$sum2." บาท</th></tr>";
+	echo "<tr style='background-color:#DCDCDC'><th colspan='4'>จำนวนผู้ใช้บริการทั้งหมด ".number_format($sum1)." และผลรวมเงินทั้งหมด ".number_format($sum2)." บาท</th></tr>";
 }else {
 	echo "กรุณากรอกคำค้นของคุณ";
 	}

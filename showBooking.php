@@ -15,7 +15,8 @@ include "dbconnect.php";
 include "menu.php";
 date_default_timezone_set("Asia/Bangkok");
 //count all patients from database order by name, this is used for caculate the numbers of pages
-$sql = "SELECT count(*) np FROM book,timeslot WHERE timeslot.slotid=book.slotid AND bstatus='1' AND cusid='".$_SESSION['valid_id']."' ";
+$sql = "SELECT count(*) np FROM book,timeslot 
+		WHERE timeslot.slotid=book.slotid AND bstatus='1' AND cusid='".$_SESSION['valid_id']."' ";
 $result = $conn->query($sql);
 $rw = $result->fetch_assoc(); 
 $numfound = $rw['np']; //return the number of records
@@ -65,24 +66,27 @@ if($_POST[showPage]){
    $start=0;
 }
 
-$sql = "SELECT bkid,bkdate,numpgr,timeslot.slotid,frm_to,t_start FROM book,timeslot WHERE timeslot.slotid=book.slotid AND bstatus='1' AND cusid='".$_SESSION['valid_id']."'
-        ORDER BY bkid LIMIT $start , $p_size";
+$sql = "SELECT bkid,bkdate,con_nme,con_tel,plcnme,numpgr,timeslot.slotid,frm_to,t_start 
+		FROM book,timeslot WHERE timeslot.slotid=book.slotid AND bstatus='1' AND cusid='".$_SESSION['valid_id']."'
+        ORDER BY bkid,bkdate,slotid LIMIT $start , $p_size";
 // echo $sql;
 			
 $result = $conn->query($sql);
 	
-echo "<h2 style='color: #001a4d'>All Booking</h2>";
+echo "<h2 style='color: #001a4d'>ข้อมูลการจอง</h2>";
 echo "<table class='table'>";
 echo "<tr style='background-color:#DCDCDC'>";
-echo "<th>NO</th>";
-// echo "<th>Book ID</th>";
-echo "<th>Book Date</th>";
-// echo "<th>Time Slot</th>";
-echo "<th>From-To</th>";
-echo "<th>Slot time</th>";
-// echo "<th>Number of people given to pick up</th>";
+echo "<th>ลำดับ</th>";
+echo "<th>รหัสการจอง</th>";
+echo "<th>วันที่เดินทาง</th>";
+echo "<th>จุดเริ่มต้นและปลายทาง</th>";
+echo "<th>เวลา</th>";
+echo "<th>ชื่อผู้ติดต่อ</th>";
+echo "<th>เบอร์โทรศัพท์</th>";
+echo "<th>สถานที่</th>";
+echo "<th>จำนวนที่นั่ง</th>";
 
-echo "<th >ดำเนินการ</th>";
+// echo "<th >ดำเนินการ</th>";
 echo "</tr>";
 if ($result->num_rows > 0) {
     //loop to show the details of each record
@@ -90,21 +94,26 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
 		echo "<tr>";
 		echo "<td>".++$n."</td>";
-        // echo "<td>".$row["bkid"]."</td>";
+        echo "<td>".$row["bkid"]."</td>";
 		echo "<td>".$row["bkdate"]."</td>";
 		// echo "<td>".$row["slotid"]."</td>";
 		echo "<td>".$row["frm_to"]."</td>";
 		echo "<td>".$row["t_start"]."</td>";
-		echo "<td>";
-		echo "<form action = 'viewBook.php' method ='post'> ";
-		echo "<input type='hidden' name ='bkdate'  value = '".$row["bkdate"]."'/>";	
-		echo "<input type='hidden' name ='slotid'  value = '".$row["slotid"]."'/>";		
-		echo "<input name = 'view' type='submit' value='แสดง' />";
-		echo "</form>";
-		echo "</td>";
+		// echo "<td>".$row["bkid"]."</td>";
+        echo "<td>".$row["con_nme"]."</td>";
+		echo "<td>".$row["con_tel"]."</td>";
+		echo "<td>".$row["plcnme"]."</td>";
+		echo "<td>".$row["numpgr"]."</td>";
+		// echo "<td>";
+		// echo "<form action = 'viewBook.php' method ='post'> ";
+		// echo "<input type='hidden' name ='bkdate'  value = '".$row["bkdate"]."'/>";	
+		// echo "<input type='hidden' name ='slotid'  value = '".$row["slotid"]."'/>";		
+		// echo "<input name = 'view' type='submit' value='แสดง' />";
+		// echo "</form>";
+		// echo "</td>";
 		echo "</tr>";	
     }
-	echo "<tr style='background-color:#DCDCDC'><th colspan='11'>Total ".$numfound." records </th></tr>";
+	echo "<tr style='background-color:#DCDCDC'><th colspan='11'>ทั้งหมด ".$numfound." แถว </th></tr>";
 } else {
     echo "0 results";
 }

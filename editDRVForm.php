@@ -33,7 +33,7 @@
 
   <div class="col-sm-4" ></div>
   <div class="col-sm-4">
-    <h2>Edit Staff Form</h2>
+    <h2>แก้ไขข้อมูลคนขับรถ</h2>
     <!-- this enctype="multipart/form-data" is necessary for uploading file -->
     <form action="operation.php" method="post" enctype="multipart/form-data">
 	
@@ -44,29 +44,29 @@
     </div>
 
     <div class="form-group">
-      <label for="user">Name:</label>
+      <label for="user">ชื่อ:</label>
       <input type="text" class="form-control" name="nme" value="<?php echo $row["dnme"] ?>">
     </div>
 
     <div class="form-group">
-          <label for="user">Surname:</label>
+          <label for="user">นามสกุล:</label>
           <input type="text" class="form-control" name="snme" value="<?php echo $row["dsurnme"] ?>"> 
       </div>
 
     <div class="form-group">
-          <label for="user">Gender:</label>
+          <label for="user">เพศ:</label>
           <input type="radio" name="sex" value="male" <?php if ($row["dsex"]==male) echo "checked" ?> > Male
           <input type="radio" name="sex" value="female"> Female<br>
       </div>
 
       <div class="form-group">
-          <label for="user">ID card:</label>
-          <input type="text" class="form-control" name="idcard" value="<?php echo $row["idcard"] ?>"> <!-- "required" means this field is required -->
+          <label for="user">เลขบัตรประชาชน:</label>
+          <input type="number" class="form-control" name="idcard" value="<?php echo $row["idcard"] ?>"> <!-- "required" means this field is required -->
       </div>
 
     <div class="form-group">
-          <label for="user">Tel:</label>
-          <input type="text" class="form-control" name="tel" value="<?php echo $row["dtel"] ?>"> 
+          <label for="user">เบอร์โทรศัพท์:</label>
+          <input type="number" class="form-control" name="tel" value="<?php echo $row["dtel"] ?>"> 
       </div>
 
     <div class="form-group">
@@ -75,21 +75,21 @@
       </div>
 
       <div class="form-group">
-        <label for="user">Address:</label>
+        <label for="user">ที่อยู่:</label>
         <input type="text" class="form-control" name="add" value="<?php echo $row["d_add"] ?>"> <!-- "required" means this field is required -->
       </div>
 
       <div class="form-group">
-        <label for="user">Driver's license:</label>
-        <input type="text" class="form-control" name="drl" value="<?php echo $row["drvlics"] ?>"> <!-- "required" means this field is required -->
+        <label for="user">เลขใบขับขี่:</label>
+        <input type="number" class="form-control" name="drl" value="<?php echo $row["drvlics"] ?>"> <!-- "required" means this field is required -->
       </div>
 
       <div class="form-group">
-        <label for="user">Driver's expiration date:</label>
-        <input type="text" class="form-control" name="exp" value="<?php echo $row["expdrv"] ?>"> <!-- "required" means this field is required -->
+        <label for="user">วันหมดอายุใบขับขี่:</label>
+        <input type="date" class="form-control" name="exp" value="<?php echo $row["expdrv"] ?>"> <!-- "required" means this field is required -->
       </div>
 
-      <input type="submit" class="btn btn-primary" name="updateDrv" value="Update">
+      <input type="submit" class="btn btn-primary" name="updateDrv" value="อัพเดต">
     
     </form>
   </div>

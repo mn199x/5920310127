@@ -33,7 +33,7 @@
 
   <div class="col-sm-4" ></div>
   <div class="col-sm-4" >
-	<h2>Edit Customer Form</h2>
+	<h2>แก้ไขข้อมูลลูกค้า</h2>
 	<!-- this enctype="multipart/form-data" is necessary for uploading file -->
 	<form action="operation.php" method="post" enctype="multipart/form-data">
 	
@@ -44,24 +44,24 @@
 	</div>
 
 	<div class="form-group">
-		<label for="user">Name:</label>
+		<label for="user">ชื่อ:</label>
 		<input type="text" class="form-control" name="nme" value="<?php echo $row["cnme"] ?>">
 	</div>
 
 	<div class="form-group">
-        <label for="user">Surname:</label>
+        <label for="user">นามสกุล:</label>
         <input type="text" class="form-control" name="snme" value="<?php echo $row["csurnme"] ?>"> 
     </div>
 
 	<div class="form-group">
-        <label for="user">Gender:</label>
+        <label for="user">เพศ:</label>
         <input type="radio" name="sex" value="male" <?php if ($row["csex"]=='male') echo "checked" ?> > Male
         <input type="radio" name="sex" value="female" <?php if ($row["csex"]=='female') echo "checked" ?>> Female<br>
     </div>
 
 	<div class="form-group">
-        <label for="user">Tel:</label>
-        <input type="text" class="form-control" name="tel" value="<?php echo $row["ctel"] ?>"> 
+        <label for="user">เบอร์โทรศัพท์:</label>
+        <input type="number" class="form-control" name="tel" value="<?php echo $row["ctel"] ?>"> 
     </div>
 
 	<div class="form-group">
@@ -75,7 +75,7 @@
 	
 
 
-	<input type="submit" class="btn btn-primary" name="updateCust" value="Update">
+	<input type="submit" class="btn btn-primary" name="updateCust" value="อัพเดต">
 	</form>
 	</div>
 

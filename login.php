@@ -72,28 +72,28 @@ if($utype=="1")//in case of staff
 
   <div class="col-sm-4" ></div>
   <div class="col-sm-4" >
-  <h2>Please login</h2>
+  <h2>เข้าสู่ระบบ</h2>
   <form  method="post" >
     <div class="input-group">
 		<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-    	<input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required> <!-- "required" means this field is required -->
+    	<input type="email" class="form-control" id="email" placeholder="กรุณาใส่ email" name="email" required> <!-- "required" means this field is required -->
     </div>
 	<br>
     <div class="input-group">
 	<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" required>
+      <input type="password" class="form-control" id="pwd" placeholder="กรุณาใส่รหัสผ่าน" name="pwd" required>
     </div>
 	<br>
-	<label for="tp">User Type:</label>
+	<label for="tp">ประเภทผู้ใช้:</label>
 	<div class="form-group form-check" id="tp">
       <label class="form-check-label">
-				<input type="radio" name="utype" value="1" checked>Staff
-				<input type="radio" name="utype" value="2">Driver
-				<input type="radio" name="utype" value="3">Customer
+				<input type="radio" name="utype" value="1" checked>พนักงาน
+				<input type="radio" name="utype" value="2">คนขับรถ
+				<input type="radio" name="utype" value="3">ลูกค้า
       </label>
     </div>
 
-    <center><input type="submit" class="btn btn-primary " name="loginbtn" value="login" ><center>
+    <center><input type="submit" class="btn btn-primary " name="loginbtn" value="เข้าสู่ระบบ" ><center>
   </form>
   </div>
 

@@ -36,13 +36,11 @@ th {
 	
 	$result = $conn->query($sql);
 	
-	// $sexs = array();
-	// $sexs[0]="ไม่ระบุ";$sexs[1]="ชาย";$sexs[2]="หญิง";
 		
 	//the beginning of summary table 	
 	echo "<div>";
     echo "<h2 style='color: #001a4d'>สรุปแต่ละเดือน</h2>";
-    echo "<h3 style='color: #001a4d'>จำแนกตาม เดือนและคนใช้บริการใน</h3>";
+    echo "<h3 style='color: #001a4d'>จำแนกตาม คนใช้บริการในแต่ละเที่ยวรถและเงินที่ได้</h3>";
 	echo "<table class='table'>";
 	echo "<tr style='background-color:#DCDCDC'><th>เดือน</th><th>จำนวนคนที่จอง</th><th>จำนวนเงินที่ได้</th></tr>";
 	
@@ -54,9 +52,33 @@ th {
 		$nb = $rw['nb'];
 		$pr = $rw['pr'];		
 		echo "<tr>";
-			echo "<td>".$mm."</td>";
-			echo "<td>".$nb."</td>";
-			echo "<td>".$pr."</td>";
+				if($mm=='01'){
+					echo "<td> มกราคม </td>";
+				}else if($mm=='02'){
+					echo "<td> กุมภาพันธ์ </td>";
+				}else if($mm=='03'){
+					echo "<td> มีนาคม </td>";
+				}else if($mm=='04'){
+					echo "<td> เมษายน </td>";
+				}else if($mm=='05'){
+					echo "<td> พฤษภาคม </td>";
+				}else if($mm=='06'){
+					echo "<td> มิถุนายน </td>";
+				}else if($mm=='07'){
+					echo "<td> กรกฎาคม </td>";
+				}else if($mm=='08'){
+					echo "<td> สิงหาคม </td>";
+				}else if($mm=='09'){
+					echo "<td> กันยายน </td>";
+				}else if($mm=='10'){
+					echo "<td> ตุลาคม </td>";
+				}else if($mm=='11'){
+					echo "<td> พฤษจิกายน </td>";
+				}else{
+					echo "<td>ธันวาคม </td>";
+				}
+			echo "<td>".number_format($nb)."</td>";
+			echo "<td>".number_format($pr)."</td>";
 			echo "</tr>";
 			$sum1=$sum1+($nb);
 			$sum2=$sum2+($pr);

@@ -82,16 +82,16 @@ $sql = "SELECT drvid, dnme, dsurnme, d_email, dsex, dtel
 			
 $result = $conn->query($sql);
 	
-echo "<h2 style='color: #001a4d'>All Driver</h2>";
+echo "<h2 style='color: #001a4d'>ข้อมูลคนขับรถ</h2>";
 echo "<table class='table'>";
 echo "<tr style='background-color:#DCDCDC'>";
 echo "<th><center>ลำดับที่</center></th>";
 // echo "<th>ID</th>";
-echo "<th>First name</th>";
-echo "<th>Last name</th>";
+echo "<th>ชื่อ</th>";
+echo "<th>นามสกุล</th>";
 echo "<th>E-mail</th>";
-echo "<th>Gender</th>";
-echo "<th>Tel</th>";
+echo "<th>เพศ</th>";
+echo "<th>เบอร์โทรศัพท์</th>";
 echo "<th colspan=2>ดำเนินการ</th>";
 echo "</tr>";
 if ($result->num_rows > 0) {
@@ -109,18 +109,18 @@ if ($result->num_rows > 0) {
 		echo "<td>";
 		echo "<form action = 'editDRVForm.php' method ='post'> ";
 		echo "<input type='hidden' name ='drvid'  value = '".$row["drvid"]."'/>";		
-		echo "<input name = 'updateCust' type='submit' value='edit' />";
+		echo "<input name = 'updateCust' type='submit' value='แก้ไข' />";
 		echo "</form>";
 		echo "</td>";
-		echo "<td>";
-		echo "<form action = 'operation.php' method ='post'> ";
-		echo "<input type='hidden' name ='ptid'  value = '".$row["ptid"]."'/>";
-		echo "<input name = 'delDRV' type='submit' value='del' />";
-		echo "</form>";
-		echo "</td>";
+		// echo "<td>";
+		// echo "<form action = 'operation.php' method ='post'> ";
+		// echo "<input type='hidden' name ='ptid'  value = '".$row["ptid"]."'/>";
+		// echo "<input name = 'delDRV' type='submit' value='del' />";
+		// echo "</form>";
+		// echo "</td>";
 		echo "</tr>";	
     }
-	echo "<tr style='background-color:#DCDCDC'><th colspan='11'>Total ".$numfound." records </th></tr>";
+	echo "<tr style='background-color:#DCDCDC'><th colspan='11'>ทั้งหมด ".$numfound." แถว </th></tr>";
 } else {
     echo "0 results";
 }

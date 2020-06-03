@@ -77,19 +77,19 @@ date_default_timezone_set("Asia/Bangkok");
 //new sql for selecting all patients details
 $sql = "SELECT schdate,timeslot.slotid,frm_to,t_start,dnme,carno,band,driver.drvid FROM dayscheduled,car,timeslot,driver 
         WHERE timeslot.slotid=dayscheduled.slotid AND car.carid=dayscheduled.carid AND driver.drvid=dayscheduled.drvid
-        ORDER BY schdate LIMIT $start , $p_size";
+        ORDER BY dayscheduled.schdate DESC LIMIT $start , $p_size";
 			
 $result = $conn->query($sql);
 	
-echo "<h2 style='color: #001a4d'>Day Scheduled</h2>";
+echo "<h2 style='color: #001a4d'>ตารางเดินรถ</h2>";
 echo "<table class='table'>";
 echo "<tr style='background-color:#DCDCDC'>";
-echo "<th>NO.</th>";
-echo "<th>Scheduled date</th>";
-echo "<th>From to</th>";
-echo "<th>Time Slot</th>";
-echo "<th>Driver name</th>";
-echo "<th>Car</th>";
+echo "<th>ลำดับ</th>";
+echo "<th>วันที่</th>";
+echo "<th>จุดเริ่มต้นและปลายทาง</th>";
+echo "<th>เวลา</th>";
+echo "<th>พนักงาน</th>";
+echo "<th>รถ</th>";
 echo "<th >ดำเนินการ</th>";
 echo "</tr>";
 if ($result->num_rows > 0) {
@@ -109,7 +109,7 @@ if ($result->num_rows > 0) {
 		echo "<input type='hidden' name ='slotid'  value = '".$row["slotid"]."'/>";	
 		echo "<input type='hidden' name ='carid'  value = '".$row["carid"]."'/>";
 		echo "<input type='hidden' name ='drvid'  value = '".$row["drvid"]."'/>";
-		echo "<input name = 'updateCust' type='submit' value='more' />";
+		echo "<input name = 'updateCust' type='submit' value='เพิ่มเติม' />";
 		echo "</form>";
 		echo "</td>";
 		// echo "<td>";

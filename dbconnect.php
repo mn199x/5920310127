@@ -15,7 +15,7 @@
     $username = "5920310127";
     $password = "5920310127";
     $dbname = "5920310127";
-    // // Create connection object
+    // Create connection object
     $conn = new mysqli($servername, $username, $password, $dbname);
     
     // Check connection

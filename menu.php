@@ -77,7 +77,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="index.php" style="color:#ffffff">HOME</a>
+      <a class="navbar-brand" href="index.php" style="color:#ffffff">หน้าแรก</a>
     </div>
 
     <div class="collapse navbar-collapse" id="myNavbar">
@@ -87,65 +87,65 @@
         <?php
           if($utype==1) { //if the login user is staff/admin
             echo" 
-                <li><a href='bookForSTF.php' style='color:#ffffff' title='จอง'>Book</a></li>
+                <li><a href='bookForSTF.php' style='color:#ffffff' >จอง</a></li>
                 <li class='dropdown'>
-                <a class='dropdown-toggle' data-toggle='dropdown' href='#' style='color:#ffffff' title='จัดตารางเที่ยวรถ'>Day schedule<span class='caret'></span></a>
+                <a class='dropdown-toggle' data-toggle='dropdown' href='#' style='color:#ffffff' >จัดตารางเที่ยวรถ<span class='caret'></span></a>
                 <ul class='dropdown-menu' style='color:#ffffff'>
-                  <li><a href='dayschedule.php' title='เพิ่ม'>Add new</a></li>
-                  <li><a href='showDaySch.php' title='แสดง' >Show all</a></li>
+                  <li><a href='dayschedule.php'>เพิ่ม</a></li>
+                  <li><a href='showDaySch.php'>ข้อมูลเดินรถ</a></li>
                 </ul>
                 </li>
 
                 <li class='dropdown'>
-                <a class='dropdown-toggle' data-toggle='dropdown' href='#' style='color:#ffffff' title='พนักงาน'>Staff <span class='caret'></span></a>
+                <a class='dropdown-toggle' data-toggle='dropdown' href='#' style='color:#ffffff'>พนักงาน <span class='caret'></span></a>
                 <ul class='dropdown-menu' style='color:#ffffff'>
-                  <li><a href='insertSTF.php' title='เพิ่ม'>Add new</a></li>
-                  <li><a href='showSTF.php' title='แสดงรายการพนักงาน' >Show all staff</a></li>
-                  <li><a href='showBooking.php' title='แสดงรายการจอง' >Show booking</a></li>
+                  <li><a href='insertSTF.php'>เพิ่ม</a></li>
+                  <li><a href='showSTF.php'>ข้อมูลพนักงาน</a></li>
+                  <li><a href='showBooking.php'>แสดงรายการจอง</a></li>
                 </ul>
                 </li>
 
                 <li class='dropdown'>
-                <a class='dropdown-toggle' data-toggle='dropdown' href='#' style='color:#ffffff' title='คนขับรถ'>Driver <span class='caret'></span></a>
+                <a class='dropdown-toggle' data-toggle='dropdown' href='#' style='color:#ffffff'>คนขับรถ <span class='caret'></span></a>
                 <ul class='dropdown-menu' >
-                  <li><a href='insertDRV.php' title='เพิ่ม'>Add new</a></li>
-                  <li><a href='showDRV.php' title='แสดง'>Show all</a></li>
+                  <li><a href='insertDRV.php'>เพิ่ม</a></li>
+                  <li><a href='showDRV.php'>ข้อมูลคนขับรถ</a></li>
                 </ul>
                 </li> 
 
                 <li class='dropdown' >
-                <a class='dropdown-toggle' data-toggle='dropdown' href='#' style='color:#ffffff' title='ลูกค้า'>Customer <span class='caret'></span></a>
+                <a class='dropdown-toggle' data-toggle='dropdown' href='#' style='color:#ffffff'>ลูกค้า <span class='caret'></span></a>
                 <ul class='dropdown-menu' >
-                  <li><a href='showCust.php' title='แสดง'>Show all</a></li>
+                  <li><a href='showCust.php'>ข้อมูลลูกค้า</a></li>
                 </ul>
                 </li>
 
                 <li class='dropdown' >
-                <a class='dropdown-toggle' data-toggle='dropdown' href='#' style='color:#ffffff' title='รายการสรุป'>Report <span class='caret'></span></a>
+                <a class='dropdown-toggle' data-toggle='dropdown' href='#' style='color:#ffffff'>รายการสรุป<span class='caret'></span></a>
                 <ul class='dropdown-menu' >
-                  <li><a href='report.php' title='แสดงทั้งหมด'>All</a></li>
-                  <li><a href='reportY.php' title='แสดงปี'>Year</a></li>
-                  <li><a href='reportM.php' title='แสดงเดือน'>Month</a></li>
-                  <li><a href='find.php' title='ค้นหา'>Search</a></li>
+                  <li><a href='report.php'>ทั้งหมด</a></li>
+                  <li><a href='reportY.php'>ปี</a></li>
+                  <li><a href='reportM.php'>เดือน</a></li>
+                  <li><a href='find.php'>ค้นหา</a></li>
                 </ul>
                 </li>
                 
               ";
           }
           else if($utype==2){//driver
-            echo" <li><a href='detail.php' style='color:#ffffff' title='แสดง'>Show</a></li>";
+            echo" <li><a href='detail.php' style='color:#ffffff'>ตารางขับรถ</a></li>";
                 
           }
           else if($utype==3){ //customer
-            echo" <li><a href='showCBook.php' style='color:#ffffff' title='แสดง'>Show</a></li>
-                  <li><a href='book.php' style='color:#ffffff' title='จอง'>Book</a></li>";    
+            echo" <li><a href='showCBook.php' style='color:#ffffff'>รายการจอง</a></li>
+                  <li><a href='book.php' style='color:#ffffff'>จอง</a></li>";    
           }
           else {
             echo" <li class='dropdown'>
-                  <a class='dropdown-toggle' data-toggle='dropdown' href='#' style='color:#ffffff' title='ลงทะเบียน'>Register <span class='caret'></span></a>
+                  <a class='dropdown-toggle' data-toggle='dropdown' href='#' style='color:#ffffff'>ลงทะเบียน <span class='caret'></span></a>
                   <ul class='dropdown-menu'>
-                  <li><a href='register.php' title='ลูกค้า'>Customer </a></li>
-                  <li><a href='insertSTF.php' title='พนักงาน'>Staff</a></li>
+                  <li><a href='register.php'>ลูกค้า </a></li>
+                  <li><a href='insertSTF.php'>พนักงาน</a></li>
                 </ul>
                 </li>
                 ";
@@ -156,7 +156,7 @@
       <ul class="nav navbar-nav navbar-right">
         <?php
           if($id=="") { //no login
-               echo "<li><a href='login.php' style='color:#ffffff' title='เข้าสู่ระบบ'><span class='glyphicon glyphicon-log-in'></span> Login</a></li>";
+               echo "<li><a href='login.php' style='color:#ffffff'><span class='glyphicon glyphicon-log-in'></span> เข้าสู่ระบบ</a></li>";
           } else {  //logined staff
               if($utype==1)
                   echo "<li><a href='editStfForm.php?id=".$id."' style='color:#ffffff'><span class='glyphicon glyphicon-user'></span> ".$fnme."</a></li>";
@@ -166,7 +166,7 @@
                           echo "<li><a href='editCustForm.php?id=".$id."' style='color:#ffffff'><span class='glyphicon glyphicon-user'></span> ".$fnme."</a></li>";
                           // echo "<li><a href='book.php?id=".$id."'><span class='glyphicon glyphicon-user'></span> ""</a></li>";
               
-              echo "<li><a href='logout.php' style='color:#ffffff' title='ออกจากระบบ'><span class='glyphicon glyphicon-log-out'></span> Logout</a></li>";
+              echo "<li><a href='logout.php' style='color:#ffffff' ><span class='glyphicon glyphicon-log-out'></span> ออกจากระบบ</a></li>";
           }
         ?>
       </ul>

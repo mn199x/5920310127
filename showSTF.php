@@ -81,16 +81,16 @@ $sql = "SELECT stfid, stfnme, stfsurnme, s_email, stfsex, stftel
 			ORDER BY stfid LIMIT $start , $p_size";
 			
 $result = $conn->query($sql);
-	echo "<h2 style='color: #001a4d'>All Staff</h2>";
+	echo "<h2 style='color: #001a4d'>ข้อมูลพนักงาน</h2>";
 	echo "<table class='table'>";
 	echo "<tr style='background-color:#DCDCDC'>";
 	echo "<th><center>ลำดับที่</center></th>";
-	echo "<th>ID</th>";
-	echo "<th>First name</th>";
-	echo "<th>Last name</th>";
+	// echo "<th>ID</th>";
+	echo "<th>ชื่อ</th>";
+	echo "<th>นามสกุล</th>";
 	echo "<th>E-mail</th>";
-	echo "<th>Gender</th>";
-	echo "<th>Tel</th>";
+	echo "<th>เพศ</th>";
+	echo "<th>เบอร์โทรศัพท์</th>";
 // echo "<th>ดำเนินการ</th>";
 	echo "</tr>";
 	if ($result->num_rows > 0) {
@@ -99,7 +99,7 @@ $result = $conn->query($sql);
 		while($row = $result->fetch_assoc()) {
 			echo "<tr>";
 			echo "<td><center>".++$n."</center></td>";
-			echo "<td>".$row["stfid"]."</td>";
+			// echo "<td>".$row["stfid"]."</td>";
 			echo "<td>".$row["stfnme"]."</td>";
 			echo "<td>".$row["stfsurnme"]."</td>";
 			echo "<td>".$row["s_email"]."</td>";
@@ -120,9 +120,9 @@ $result = $conn->query($sql);
 			echo "</tr>";	
 		}
 
-	echo "<tr style='background-color:#DCDCDC'><th colspan='11'>Total ".$numfound." records </th></tr>";
+	echo "<tr style='background-color:#DCDCDC'><th colspan='11'>ทั้งหมด ".$numfound." แถว </th></tr>";
 } else {
-    echo "0 results";
+    echo "0 ผลลัพธ์";
 }
 //show navigation bar
 echo "<tr><td colspan='13'><center>";

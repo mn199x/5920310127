@@ -37,7 +37,7 @@
 
   <div class="col-sm-4" ></div>
   <div class="col-sm-4" >
-  <h2>Day Schedule Form</h2>
+  <h2>แบบฟอร์มการจัดเที่ยวรถ</h2>
   <form action="operation.php" method="post">
     <!-- <div class="form-group">
         <label for="user">ID:</label>
@@ -45,11 +45,11 @@
     </div> -->
     
     <div class="form-group">
-        <label for="user">Date:</label>
-        <input type="date" class="form-control" name="dte" required> <!-- "required" means this field is required -->
+        <label for="user">วันที่:</label>
+        <input type="date" class="form-control" name="dte" min ='<?php echo date('Y-m-d'); ?>' required> <!-- "required" means this field is required -->
     </div>
     <div class="form-group">
-      <label for="user">ช่วงเวลาที่ต้องการจอง:</label>
+      <label for="user">ช่วงเวลาที่ต้องการ:</label>
       <?php
         include "dbconnect.php";
         $sql = "SELECT * FROM timeslot ORDER BY slotid";
@@ -93,7 +93,7 @@
     ?>
     </div>
     
-    <input type="submit" name="schedule" class="btn btn-primary" value="Submit">
+    <input type="submit" name="schedule" class="btn btn-primary" value="ยืนยัน">
   </form>
   </div>
 

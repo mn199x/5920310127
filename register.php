@@ -34,39 +34,39 @@ session_start();
         <input type="text" class="form-control" name="id" value='<?php echo $custno; ?>'>
     </div> -->
     <div class="col-sm-4" > 
-      <h2>Register Customer Form</h2>
+      <h2>ลงทะเบียนลูกค้า</h2>
       <form action="operation.php" method="post">
     
       <div class="form-group">
-          <label for="user">Name:</label>
-          <input type="text" class="form-control" placeholder="Enter your name" name="nme" required> <!-- "required" means this field is required -->
+          <label for="user">ชื่อ:</label>
+          <input type="text" class="form-control" placeholder="กรุณากรอก" name="nme" required> <!-- "required" means this field is required -->
       </div>
       <div class="form-group">
-          <label for="user">Surname:</label>
-          <input type="text" class="form-control" placeholder="Enter your surname" name="snme" required> <!-- "required" means this field is required -->
+          <label for="user">นามสกุล:</label>
+          <input type="text" class="form-control" placeholder="กรุณากรอก" name="snme" required> <!-- "required" means this field is required -->
       </div>
       <div class="form-group">
-          <label for="user">Gender:</label>
-          <input type="radio" name="sex" value="male" checked> Male
-          <input type="radio" name="sex" value="female"> Female<br>
+          <label for="user">เพศ:</label>
+          <input type="radio" name="sex" value="male" checked> ชาย
+          <input type="radio" name="sex" value="female"> หญิง<br>
       </div>
       <div class="form-group">
-          <label for="user">Tel:</label>
-          <input type="text" class="form-control" placeholder="Enter your telephone" name="tel" required> <!-- "required" means this field is required -->
+          <label for="user">เบอร์โทรศัพท์:</label>
+          <input type="number" class="form-control" placeholder="กรุณากรอก" name="tel" required> <!-- "required" means this field is required -->
       </div>
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" class="form-control" placeholder="Enter your email" name="email" required> <!-- "required" means this field is required -->
+        <input type="email" class="form-control" placeholder="กรุณากรอก" name="email" required> <!-- "required" means this field is required -->
       </div>
       <div class="form-group">
-        <label for="pwd">Password:</label>
-        <input type="password" class="form-control" placeholder="Enter your password" name="pwd" required>
+        <label for="pwd">รหัสผ่าน:</label>
+        <input type="password" class="form-control" placeholder="กรุณากรอก" name="pwd" required>
       </div>
       <div class="form-group">
-        <label for="pwd">Confirm Password:</label>
-        <input type="password" class="form-control" placeholder="Enter your password" name="conpwd" required>
+        <label for="pwd">ยืนยันรหัสผ่าน:</label>
+        <input type="password" class="form-control" placeholder="กรุณากรอก" name="conpwd" required>
       </div>
-      <input type="submit" name="register" class="btn btn-primary" value="Submit">
+      <input type="submit" name="register" class="btn btn-primary" value="ยืนยัน">
     </form>
     </div>
     

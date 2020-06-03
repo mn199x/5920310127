@@ -29,7 +29,7 @@ include "menu.php";
 
   <div class="col-sm-4" ></div>
   <div class="col-sm-4" >
-      <h2>Register Driver Form</h2>
+      <h2>ลงทะเบียนคนขับรถ</h2>
       <form action="operation.php" method="post">
         <!-- <div class="form-group">
             <label for="user">ID:</label>
@@ -37,44 +37,44 @@ include "menu.php";
         </div> -->
         
         <div class="form-group">
-            <label for="user">Name:</label>
-            <input type="text" class="form-control" placeholder="Enter your name" name="nme" required> <!-- "required" means this field is required -->
+            <label for="user">ชื่อ:</label>
+            <input type="text" class="form-control" placeholder="กรุณากรอก" name="nme" required> <!-- "required" means this field is required -->
         </div>
         <div class="form-group">
-            <label for="user">Surname:</label>
-            <input type="text" class="form-control" placeholder="Enter your surname" name="snme" required> <!-- "required" means this field is required -->
+            <label for="user">นามสกุล:</label>
+            <input type="text" class="form-control" placeholder="กรุณากรอก" name="snme" required> <!-- "required" means this field is required -->
         </div>
         <div class="form-group">
-            <label for="user">Gender:</label>
-            <input type="radio" name="sex" value="male" checked> Male
-            <input type="radio" name="sex" value="female"> Female<br>
+            <label for="user">เพศ:</label>
+            <input type="radio" name="sex" value="male" checked> ชาย
+            <input type="radio" name="sex" value="female"> หญิง<br>
         </div>
         <div class="form-group">
-            <label for="user">ID card:</label>
-            <input type="text" class="form-control" placeholder="Enter your ID card" name="idcard" required> <!-- "required" means this field is required -->
+            <label for="user">เลขบัตรประชาชน:</label>
+            <input type="number" class="form-control" placeholder="กรุณากรอก" name="idcard" required> <!-- "required" means this field is required -->
         </div>
         <div class="form-group">
-            <label for="user">Tel:</label>
-            <input type="text" class="form-control" placeholder="Enter your telephone" name="tel" required> <!-- "required" means this field is required -->
+            <label for="user">เบอร์โทรศัพท์:</label>
+            <input type="number" class="form-control" placeholder="กรุณากรอก" name="tel" required> <!-- "required" means this field is required -->
         </div>
         <div class="form-group">
           <label for="email">Email:</label>
-          <input type="email" class="form-control" placeholder="Enter your email" name="email" required> <!-- "required" means this field is required -->
+          <input type="email" class="form-control" placeholder="กรุณากรอก" name="email" required> <!-- "required" means this field is required -->
         </div>
         <div class="form-group">
-          <label for="user">Address:</label>
-          <input type="text" class="form-control" placeholder="Enter your Address" name="add" required> <!-- "required" means this field is required -->
+          <label for="user">ที่อยู่:</label>
+          <input type="text" class="form-control" placeholder="กรุณากรอก" name="add" required> <!-- "required" means this field is required -->
         </div>
         <div class="form-group">
-          <label for="user">Driver's license:</label>
-          <input type="text" class="form-control" placeholder="Enter your Driver's license" name="drl" required> <!-- "required" means this field is required -->
+          <label for="user">เลขใบขับขี่:</label>
+          <input type="number" class="form-control" placeholder="กรุณากรอก" name="drl" required> <!-- "required" means this field is required -->
         </div>
         <div class="form-group">
-          <label for="user">Driver's expiration date:</label>
-          <input type="date" class="form-control" placeholder="Enter your Driver's expiration date" name="exp" required> <!-- "required" means this field is required -->
+          <label for="user">วันหมดอายุใบขับขี่:</label>
+          <input type="date" class="form-control" placeholder="กรุณากรอก" name="exp" required> <!-- "required" means this field is required -->
         </div>
         
-        <input type="submit" name="insertDRV" class="btn btn-primary" value="Submit">
+        <input type="submit" name="insertDRV" class="btn btn-primary" value="ยืนยัน">
     </form>
     </div>
 

@@ -15,10 +15,15 @@ include "dbconnect.php";
 include "menu.php";
 date_default_timezone_set("Asia/Bangkok");
 //count all patients from database order by name, this is used for caculate the numbers of pages
-$sql = "SELECT count(*) np FROM dayscheduled,timeslot,car,book 
-		WHERE drvid='".$_SESSION['valid_id']."' AND dayscheduled.slotid=timeslot.slotid 
-		AND car.carid=dayscheduled.carid AND dayscheduled.schdate=book.bkdate AND dayscheduled.slotid=book.slotid
-		ORDER BY schdate";
+// $sql = "SELECT count(*) np FROM dayscheduled,timeslot,car 
+// 		WHERE drvid='".$_SESSION['valid_id']."' AND dayscheduled.slotid=timeslot.slotid 
+// 		AND car.carid=dayscheduled.carid AND dayscheduled.schdate=book.bkdate AND dayscheduled.slotid=book.slotid
+// 		ORDER BY schdate";
+$sql = "SELECT COUNT(schdate AND timeslot.slotid AND frm_to AND t_start AND car.carid AND carno AND band AND drvid) as np 
+		FROM dayscheduled,timeslot,car WHERE drvid='".$_SESSION['valid_id']."' 
+		AND dayscheduled.slotid=timeslot.slotid AND car.carid=dayscheduled.carid 
+		ORDER BY schdate DESC";
+// echo $sql;
 $result = $conn->query($sql);
 $rw = $result->fetch_assoc(); 
 $numfound = $rw['np']; //return the number of records
@@ -68,25 +73,27 @@ if($_POST[showPage]){
    $start=0;
 }
 
-$sql = "SELECT schdate,timeslot.slotid,frm_to,t_start,car.carid,carno,band,bkdate,drvid FROM dayscheduled,timeslot,car,book 
-		WHERE drvid='".$_SESSION['valid_id']."' AND dayscheduled.slotid=timeslot.slotid 
-		AND car.carid=dayscheduled.carid AND dayscheduled.schdate=book.bkdate AND dayscheduled.slotid=book.slotid
-		ORDER BY schdate LIMIT $start , $p_size";
+// $sql = "SELECT schdate,timeslot.slotid,frm_to,t_start,car.carid,carno,band,bkdate,drvid FROM dayscheduled,timeslot,car,book 
+// 		WHERE drvid='".$_SESSION['valid_id']."' AND dayscheduled.slotid=timeslot.slotid 
+// 		AND car.carid=dayscheduled.carid AND dayscheduled.schdate=book.bkdate AND dayscheduled.slotid=book.slotid
+// 		ORDER BY schdate LIMIT $start , $p_size";
+$sql = "SELECT schdate,timeslot.slotid,frm_to,t_start,car.carid,carno,band,drvid
+		FROM dayscheduled,timeslot,car WHERE drvid='".$_SESSION['valid_id']."' 
+		AND dayscheduled.slotid=timeslot.slotid AND car.carid=dayscheduled.carid 
+		ORDER BY schdate DESC ,slotid LIMIT $start , $p_size";
 // echo $sql;
 			
 $result = $conn->query($sql);
 	
-echo "<h2 style='color: #001a4d'>ID : ".$_SESSION['valid_id']."</h2>";
+echo "<h2 style='color: #001a4d'>ID : ".$_SESSION['valid_id']." ชื่อ : ".$_SESSION['valid_fnme']." ".$_SESSION['valid_lnme']."</h2>";
 echo "<table class='table'>";
 echo "<tr style='background-color:#DCDCDC'>";
-echo "<th>NO</th>";
-echo "<th>Date</th>";
+echo "<th>ลำดับ</th>";
+echo "<th>วันที่ขับรถ</th>";
 // echo "<th>Time Slot</th>";
-echo "<th>From-To</th>";
-echo "<th>Slot time</th>";
-echo "<th>car</th>";
-// echo "<th>Gender</th>";
-// echo "<th>Tel</th>";
+echo "<th>จุดเริ่มต้นและปลายทาง</th>";
+echo "<th>เวลา</th>";
+echo "<th>รถยนต์</th>";
 echo "<th >ดำเนินการ</th>";
 echo "</tr>";
 if ($result->num_rows > 0) {
@@ -104,19 +111,20 @@ if ($result->num_rows > 0) {
 		echo "<td>";
 		echo "<form action = 'view.php' method ='post'> ";
 		echo "<input type='hidden' name ='drvid'  value = '".$row["drvid"]."'/>";	
-		echo "<input type='hidden' name ='bkdate'  value = '".$row["bkdate"]."'/>";		
+		// echo "<input type='hidden' name ='bkdate'  value = '".$row["bkdate"]."'/>";		
+		echo "<input type='hidden' name ='bkdate'  value = '".$row["schdate"]."'/>";
 		echo "<input type='hidden' name ='slotid' value = '".$row["slotid"]."'/>";
 		echo "<input name = 'view' type='submit' value='แสดง' />";
 		echo "</form>";
 		echo "</td>";
 		echo "</tr>";	
     }
-	echo "<tr style='background-color:#DCDCDC'><th colspan='11'>Total ".$numfound." records </th></tr>";
+	echo "<tr style='background-color:#DCDCDC'><th colspan='11'>ทั้งหมด ".$numfound." แถว </th></tr>";
 } else {
     echo "0 results";
 }
 // //ERROR TO BE HERE
-// $bkdate 	=$row["bkdate"];
+// $schdate 	=$row["schdate"];
 // $slotid		=$row["slotid"];
 // $t_start 	=$row["t_start"];
 // $carid		=$row["carid"];

@@ -65,24 +65,24 @@ if($_POST[showPage]){
    $start=0;
 }
 
-$sql = "SELECT bkid,bkdate,numpgr,frm_to,t_start,lik FROM book,timeslot 
+$sql = "SELECT bkid,bkdate,numpgr,timeslot.slotid,frm_to,t_start,lik FROM book,timeslot 
 		WHERE cusid='".$_SESSION['valid_id']."' AND timeslot.slotid=book.slotid AND bstatus='1'
-		ORDER BY bkid LIMIT $start , $p_size";
+		ORDER BY bkdate DESC,slotid LIMIT $start , $p_size";
 // echo $sql;
 			
 $result = $conn->query($sql);
 	
-echo "<h2 style='color: #001a4d'>ID : ".$_SESSION['valid_id']."</h2>";
+echo "<h2 style='color: #001a4d'>ID : ".$_SESSION['valid_id']." ชื่อ : ".$_SESSION['valid_fnme']." ".$_SESSION['valid_lnme']."</h2>";
 echo "<table class='table'>";
 echo "<tr style='background-color:#DCDCDC'>";
-echo "<th>NO</th>";
-echo "<th>Book ID</th>";
-echo "<th>Book Date</th>";
+echo "<th>ลำดับที่</th>";
+echo "<th>รหัสการจอง</th>";
+echo "<th>วันที่เดินทาง</th>";
 // echo "<th>Time Slot</th>";
-echo "<th>From-To</th>";
-echo "<th>Slot time</th>";
-echo "<th>Number of people given to pick up</th>";
-echo "<th>Link to Map</th>";
+echo "<th>จุดเริ่มต้นและปลายทาง</th>";
+echo "<th>เวลา</th>";
+echo "<th>จำนวนที่นั่ง</th>";
+echo "<th>Link </th>";
 echo "<th >ดำเนินการ</th>";
 echo "</tr>";
 if ($result->num_rows > 0) {
